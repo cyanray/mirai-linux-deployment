@@ -1,6 +1,6 @@
 
 # mirai linux 部署脚本
-目前仅支持 debian / ubuntu 系统
+目前仅支持 centos / debian / ubuntu 系统
 
 执行的操作: 
 1. 安装 openjdk-11-jdk
