@@ -46,7 +46,7 @@ install_pkgs() {
     if [ -x "$(command -v yum)" ]; then
 
         yum_pkgs=(
-            wget java-11-openjdk-devel
+            git java-11-openjdk-devel
         )
 
         for pkg in ${yum_pkgs[@]}; do
@@ -55,7 +55,7 @@ install_pkgs() {
 
     elif [ -x "$(command -v apt-get)" ]; then
         apt_pkgs=(
-            openjdk-11-jdk wget
+            openjdk-11-jdk git
         )
 
         for pkg in ${apt_pkgs[@]}; do
@@ -66,14 +66,8 @@ install_pkgs() {
 }
 
 download_files() {
-    echo -e "[${yellow}Info${plain}] Downloading ${green}mirai-console-wrapper-0.3.0.jar${plain} ..."
-    download "mirai-console-wrapper-0.3.0.jar" "https://github.com/mamoe/mirai-console/releases/download/wrapper-0.3.0/mirai-console-wrapper-0.3.0.jar"
-
-    echo -e "[${yellow}Info${plain}] Downloading ${green}mirai-console-addition-V0.2.3.jar${plain} ..."
-    download "mirai-console-addition-V0.2.3.jar" "https://github.com/ryoii/mirai-console-addition/releases/download/v0.2.3/mirai-console-addition-V0.2.3.jar"
-
-    echo -e "[${yellow}Info${plain}] Downloading ${green}mirai-api-http-v1.6.3.jar${plain} ..."
-    download "mirai-api-http-v1.6.3.jar" "https://github.com/mamoe/mirai-api-http/releases/download/v1.6.3/mirai-api-http-v1.6.3.jar"
+    echo -e "[${yellow}Info${plain}] Cloning files from gitee ..."
+    git clone https://gitee.com/cyanray/mirai-linux.git tmp;
 }
 
 clean_up_files() {
@@ -83,12 +77,12 @@ clean_up_files() {
     mkdir content
 
     echo -e "[${yellow}Info${plain}] Copying files ..."
-    cp mirai-console-addition-V0.2.3.jar ./plugins/
-    cp mirai-api-http-v1.6.3.jar ./plugins/
+    cp ./tmp/mirai-console-wrapper-0.3.0.jar ./
+    cp ./tmp/mirai-console-addition-V0.2.3.jar ./plugins/
+    cp ./tmp/mirai-api-http-v1.6.3.jar ./plugins/
 
     echo -e "[${yellow}Info${plain}] Cleaning up files ..."
-    rm mirai-console-addition-V0.2.3.jar
-    rm mirai-api-http-v1.6.3.jar
+    rm -rf ./tmp
 }
 
 config_mirai() {
