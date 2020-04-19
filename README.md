@@ -19,7 +19,7 @@ mirai-linux-gitee.sh 执行的操作:
 
 ```bash
 # mirai-linux-gitee.sh
-wget --no-check-certificate -O mirai-linux-gitee.sh https://webplus-cn-hangzhou-s-5e5a2d1c60533f0bea484374.oss-cn-hangzhou.aliyuncs.com/mirai-linux-gitee.sh
+wget --no-check-certificate -O mirai-linux.sh https://webplus-cn-hangzhou-s-5e5a2d1c60533f0bea484374.oss-cn-hangzhou.aliyuncs.com/mirai-linux-gitee.sh
 
 chmod +x mirai-linux.sh
 
